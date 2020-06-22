@@ -1,0 +1,39 @@
+*{
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+body{
+    background: black;
+    color: white;
+}
+#frame{
+    width: 287.5px;
+    height: 120px; 
+    border-width: 0px; 
+}
+.box{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main{
+    display: block;
+}
+.main h1{
+    color: #0c0;
+    padding: 20px 20px;
+    text-align: center;
+}
+.main a{
+    margin-top: 20px;
+    display: block;
+    line-height: 10px;
+    font-size: 1rem;
+}
+@media only screen and (min-width:575px){
+    #frame{
+        width: 575px;
+        height: 240px;
+    }
+}
