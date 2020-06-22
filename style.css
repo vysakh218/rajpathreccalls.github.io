@@ -1,6 +1,7 @@
 *{
     margin: 0px 0px;
     padding: 0px 0px;
+    -webkit-tap-highlight-color: transparent;
 }
 body{
     background: linear-gradient(135deg,#aa0,black);
