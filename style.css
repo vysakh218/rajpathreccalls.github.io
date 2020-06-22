@@ -3,12 +3,13 @@
     padding: 0px 0px;
 }
 body{
-    background: black;
+    background: linear-gradient(#660,black);
     color: white;
+    font-family: Circular, Helvetica, Arial, sans-serif, IosFix;
 }
 #frame{
     width: 287.5px;
-    height: 240px; 
+    height: 350px; 
     border-width: 0px; 
 }
 .box{
@@ -23,17 +24,10 @@ body{
 .main h1{
     color: #0c0;
     padding: 20px 20px;
-    text-align: center;
-}
-.main a{
-    margin-top: 20px;
-    display: block;
-    line-height: 10px;
-    font-size: 1rem;
 }
 @media only screen and (min-width:575px){
     #frame{
         width: 575px;
-        height: 240px;
+        height: 500px;
     }
 }
