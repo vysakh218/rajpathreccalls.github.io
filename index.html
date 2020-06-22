@@ -5,15 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Radio123</title>
     <link rel="stylesheet" href="style.css">
+    <script src='https://kit.fontawesome.com/c80d33babf.js' crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="box">
         <div class="main">
             <audio src="http://stream.zeno.fm/3726t612g2zuv" controls='true'>
-
             </audio>
-            <h1>This is Radio123</h1>
+            <div class="con">
+                <div class="plapau" id='power' onclick="play()">
+                    <i class="fa fa-power-off" aria-hidden="true"></i>
+                </div>
+            </div>          
+            <h1 id='hed'>Radio123</h1>
         </div>
     </div>
-    </body>
+    <script>
+        var player=document.getElementsByTagName('audio')[0];
+        var boolplay=false;
+        function play(){
+            if(boolplay){
+                player.pause();
+                document.getElementById('power').classList.remove('pow');
+                document.getElementById('hed').classList.remove('pow');
+            }
+            else{
+                player.play();
+                document.getElementById('power').classList.add('pow');
+                document.getElementById('hed').classList.add('pow');
+            }
+            boolplay=!boolplay;
+        }
+    </script>
+</body>
 </html>
