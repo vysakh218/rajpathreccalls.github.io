@@ -10,8 +10,9 @@
 <body>
     <div class="box">
         <div class="main">
-            <img src="bgpic.jpg" alt="can't render image">
-            <audio src="http://stream.zeno.fm/3726t612g2zuv">
+            <img src="bgpic.jpg" alt="can't render mg">
+            <!--"http://stream.zeno.fm/3726t612g2zuv"-->
+            <audio src="http://stream.zeno.fm/3726t612g2zuv" preload="none">
             </audio>
             <div class="con">
                 <div class="plapau" id='power' onclick="play()">
@@ -28,12 +29,26 @@
             if(boolplay){
                 player.pause();
                 document.getElementById('power').classList.remove('pow');
+                document.getElementById('power').classList.remove('load');
                 document.getElementById('hed').classList.remove('pow');
+                document.getElementById('power').classList.remove('err');
             }
             else{
-                player.play();
-                document.getElementById('power').classList.add('pow');
-                document.getElementById('hed').classList.add('pow');
+                document.getElementById('power').classList.add('load');
+                document.getElementById('power').classList.remove('err');
+                if(player.play()!==undefined){
+                    player.play().then(()=>{
+                        document.getElementById('power').classList.add('pow');
+                        document.getElementById('hed').classList.add('pow');
+                        document.getElementById('power').classList.remove('load');
+                    })
+                    .catch(error=>{
+                        console.log('error');
+                        document.getElementById('power').classList.add('err');
+                        document.getElementById('power').classList.remove('load');
+                        return;
+                    });
+                }
             }
             boolplay=!boolplay;
         }
