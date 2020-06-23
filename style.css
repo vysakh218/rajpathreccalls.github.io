@@ -72,3 +72,35 @@ img{
     text-shadow: 0px 0px 30px rgba(100,100,255,0.7);
     box-shadow: 0px 0px 10px rgba(100,100,255,0.7);
 }
+.plapau.load{
+    color: #0f0;
+}
+.plapau.load::after{
+    position: absolute;
+    content: '';
+    width: 100px;
+    height: 100px;
+    border-left: 3px solid #0f0;
+    border-right: 3px solid #0f0;
+    animation: rotload 1s linear infinite;
+    border-radius: 50%;
+}
+.plapau.err{
+    color: #f00;
+}
+.plapau.err::after{
+    position: absolute;
+    content: '';
+    width: 100px;
+    height: 100px;
+    border: 2px solid red;
+    border-radius: 50%;
+}
+@keyframes rotload{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
