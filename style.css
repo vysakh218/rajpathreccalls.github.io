@@ -9,24 +9,31 @@
     user-select: none;
     -webkit-tap-highlight-color: transparent;
 }
+::selection{
+    color: none;
+    background: none;
+}
 html{
     top:0px;
 }
 body{
     top:0px;
     z-index: -20;
-    background: linear-gradient(135deg,white,black);
     transition: all 1s;
 }
 .wrap{
     top: 0px;
     z-index: -19;
+    background-position: bottom right;
+    background-size: 200px 200px;
+    background-repeat: no-repeat;
 }
 .box{
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
+    background: linear-gradient(135deg,white,black);
 }
 .cube,.main{
     display: flex;
@@ -34,6 +41,10 @@ body{
     align-items: center;
     width: 400px;
     height: 600px;
+}
+.cube{
+    width: 350px;
+    height: 500px;
 }
 .main{
     position: relative;
@@ -112,8 +123,9 @@ button:hover{
     justify-content: center;
     align-items: center;
     font-size: 3rem;
-    background: radial-gradient(circle,white 0%,transparent 75%);
     color: black;
+    background: radial-gradient(circle,white 0%,transparent 75%);
+    border: 1px solid black;
 }
 .plapau i{
     width: auto;
@@ -155,5 +167,76 @@ button:hover{
     }
     100%{
         transform: rotate(360deg);
+    }
+}
+
+.loader{
+    background: #333;
+    z-index: -200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: loadspecific 3s linear 1;
+    opacity: 0;
+}
+
+.loader .load{
+    display: block;
+    width: auto;
+    height: 500px;
+}
+.loader .load img{
+    position: relative;
+    width: 350px;
+    height: 350px;
+}
+.loader .load .ld{
+    margin-top: 50px;
+    width: 60px;
+    height: 60px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    overflow: visible;
+}
+.rt{
+    overflow: visible;
+    animation: rotload 2s linear infinite;
+}
+.rt::after{
+    width: 50px;
+    height: 50px;
+    display: block;
+    content: '';
+    border: 5px solid transparent;
+    border-top-color: #0f0;
+    border-bottom-color: #0f0;
+    border-radius: 50%;
+    animation: magic 3s linear infinite;
+}
+
+@keyframes loadspecific{
+    0%{
+        z-index: 200;
+        opacity: 1;
+    }
+    70%{
+        opacity: 1;
+    }
+    99%{
+        z-index: 200;
+        opacity: 0;
+    }
+    100%{
+        z-index: -200;
+        opacity: 0;
+    }
+}
+@keyframes magic{
+    0%{
+        filter: hue-rotate(0deg);
+    }
+    100%{
+        filter: hue-rotate(360deg);
     }
 }
