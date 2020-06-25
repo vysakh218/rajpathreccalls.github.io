@@ -3,55 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radio123</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Swiper Test</title>
+    <link rel="stylesheet" href="swipe.css">
     <script src='https://kit.fontawesome.com/c80d33babf.js' crossorigin="anonymous"></script>
 </head>
-<body>
-    <div class="box">
-        <div class="main">
-            <img src="bgpic.jpg" alt="can't render mg">
-            <!--"http://stream.zeno.fm/3726t612g2zuv"-->
-            <audio src="http://stream.zeno.fm/2ce1nx83g2zuv" preload="none">
-            </audio>
-            <div class="con">
-                <div class="plapau" id='power' onclick="play()">
-                    <i class="fa fa-power-off" aria-hidden="true"></i>
+<body onload="init()">
+    <!--"http://stream.zeno.fm/3726t612g2zuv"-->
+    <div class="wrap">
+        <div class="box">
+            <div class="cube">
+                <div class="con">
+                <div class="fac"><img src="images/ragam1.jpg"></div>
+                <div class="fac"><img src="images/nitcpicdd.jpg"></div>
+                <div class="fac"><img src="images/nitcpicd.png"></div>
+                <div class="fac" id='box'><img src="images/nitcpic.png"></div>
+                        <div class="facd"></div>
+                        <div class="plapau" id='power' onclick="play()">
+                            <i class="fa fa-power-off" aria-hidden="true"></i>
+                        </div>
+                        <h1 id='hed'>Radio123</h1>
+                        <audio id='player' src="http://stream.zeno.fm/3726t612g2zuv"></audio>
                 </div>
-            </div>          
-            <h1 id='hed'>Radio123</h1>
+            </div>
         </div>
     </div>
-    <script>
-        var player=document.getElementsByTagName('audio')[0];
-        var boolplay=false;
-        function play(){
-            if(boolplay){
-                player.pause();
-                document.getElementById('power').classList.remove('pow');
-                document.getElementById('power').classList.remove('load');
-                document.getElementById('hed').classList.remove('pow');
-                document.getElementById('power').classList.remove('err');
-            }
-            else{
-                document.getElementById('power').classList.add('load');
-                document.getElementById('power').classList.remove('err');
-                if(player.play()!==undefined){
-                    player.play().then(()=>{
-                        document.getElementById('power').classList.add('pow');
-                        document.getElementById('hed').classList.add('pow');
-                        document.getElementById('power').classList.remove('load');
-                    })
-                    .catch(error=>{
-                        console.log('error');
-                        document.getElementById('power').classList.add('err');
-                        document.getElementById('power').classList.remove('load');
-                        return;
-                    });
-                }
-            }
-            boolplay=!boolplay;
-        }
-    </script>
+    <script src="index.js"></script>
 </body>
 </html>
