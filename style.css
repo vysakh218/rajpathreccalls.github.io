@@ -240,3 +240,33 @@ button:hover{
         filter: hue-rotate(360deg);
     }
 }
+
+
+footer{
+    height: auto;
+    bottom: 0px;
+}
+footer nav{
+    width: auto;
+    position: relative;
+    display: flex;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+footer nav a{
+    position: relative;
+}
+footer nav a i{
+    width: auto;
+    display: block;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    justify-content: center;
+    font-size: 2rem;
+    color:white;
+}
+footer .EndNote{
+    position: relative;
+    text-align: center;
+}
