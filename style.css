@@ -1,56 +1,105 @@
 *{
+    /*style is to prevent page from reloading while swiping down*/
+    position: absolute;
     margin: 0px 0px;
     padding: 0px 0px;
-    -webkit-tap-highlight-color: transparent;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+    user-select: none;
+}
+html{
+    top:0px;
 }
 body{
-    background: linear-gradient(135deg,#aa0,black);
-    color: white;
-    font-family: Circular, Helvetica, Arial, sans-serif, IosFix;
+    top:0px;
+    z-index: -20;
+    background: linear-gradient(135deg,white,black);
+    transition: all 1s;
 }
-audio{
-    outline: none;
-}
-audio:hover{
-    outline: none;
-}
-img{
-    height: 300px;
-    width: 300px;
-    box-shadow: 0px 2px 5px black,0px -2px 5px #aa0
-            ,2px 0px 5px black,-2px 0px 5px #aa0;
+.wrap{
+    top: 0px;
+    z-index: -19;
 }
 .box{
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
+}
+.cube,.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 600px;
 }
 .main{
+    position: relative;
+}
+.con{
+    height: 600px;
+    width: auto;
+    position: relative;
     display: block;
 }
-.main h1{
+.fac{
+    margin-top: 100px;
+    width: 250px;
+    height: 250px;
+    background: red;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+}
+.facd{
+    margin-top: 100px;
+    position: relative;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+}
+canvas{
+    width: 300px;
+    height: 300px;
+    background: black;
+    transform: scale(0.82);
+}
+img{
+    width: 250px;
+    height: 250px;
+}
+button:hover{
+    outline: none;
+}
+
+.con{
+    overflow-y: initial;
+}
+.con h1{
+    width: auto;
+    height: auto;
+    overflow-y: initial;
+    position: relative;
     text-align: center;
     margin-top: 10px;
-    color: #aa0;
+    color: white;
     padding: 20px 20px;
-    text-shadow: 0px 1px 1px black,0px -1px 1px #aa0;
+    text-shadow: 0px 1px 1px black,0px -1px 1px white;
 }
-.main h1.pow{
+.con h1.pow{
     margin-top: 20px;
     color: blue;
     text-shadow: 0px 0px 1px #6e38ef;
 }
-.con button{
-    width: 75px;
-    padding: 10px 10px;
-    border-radius: 14px;
-    font-size: 2rem;
-}
-.con button:focus{
-    outline: none;
-}
 .plapau{
+    overflow-y: initial;
+    position: relative;
     margin-top: 20px;
     margin-left: 50%;
     transform: translateX(-50%);
@@ -62,9 +111,13 @@ img{
     justify-content: center;
     align-items: center;
     font-size: 3rem;
-    box-shadow: 0px 2px 1px black,0px -2px 1px #aa0
-            ,2px 0px 1px black,-2px 0px 1px #aa0;
+    box-shadow: 0px 2px 1px black,0px -2px 1px transparent
+            ,2px 0px 1px black,-2px 0px 1px transparent;
     color: black;
+}
+.plapau i{
+    width: auto;
+    height: auto;
 }
 .plapau.pow{
     border: 1px solid #6e38ef;
