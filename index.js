@@ -274,6 +274,6 @@ function ran(){
 setInterval(()=>{
     tar=['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
     tempcolor=tar[ran()]+tar[ran()]+tar[ran()];
-    document.body.style.background=`linear-gradient(135deg,#${tempcolor},black)`;
-    console.log('really');
+    document.getElementById('box').style.background=`linear-gradient(135deg,#${tempcolor},black)`;
+    console.log('colour change');
 },15000);
