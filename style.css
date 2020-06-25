@@ -201,7 +201,7 @@ button:hover{
 }
 .rt{
     overflow: visible;
-    animation: rotload 2s linear infinite;
+    animation: rotload 1.5s linear infinite;
 }
 .rt::after{
     width: 50px;
@@ -212,7 +212,7 @@ button:hover{
     border-top-color: #0f0;
     border-bottom-color: #0f0;
     border-radius: 50%;
-    animation: magic 3s linear infinite;
+    animation: magic 0.5s linear infinite;
 }
 
 @keyframes loadspecific{
