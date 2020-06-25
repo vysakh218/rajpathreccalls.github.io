@@ -7,6 +7,7 @@
     height: 100%;
     overflow-y: hidden;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 html{
     top:0px;
