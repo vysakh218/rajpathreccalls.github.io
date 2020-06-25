@@ -111,8 +111,7 @@ button:hover{
     justify-content: center;
     align-items: center;
     font-size: 3rem;
-    box-shadow: 0px 2px 1px black,0px -2px 1px transparent
-            ,2px 0px 1px black,-2px 0px 1px transparent;
+    background: radial-gradient(circle,white 0%,transparent 75%);
     color: black;
 }
 .plapau i{
