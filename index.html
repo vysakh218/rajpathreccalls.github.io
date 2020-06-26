@@ -10,6 +10,53 @@
 <body onload="init()">
     <!--"http://stream.zeno.fm/3726t612g2zuv"-->
     <div class="wrap">
+        <div class="otabs">
+            <div class="topheader" id='topheader'>
+                <i class="fab fa-home fa" id='curicon'></i>
+                <div class="headtitle" id='curhead'>Home</div>
+                <div class="menutext" id='menutext'></div>
+                <div class="menu" id='menu' onclick="menushow()">
+                    <span></span>
+                </div>
+            </div>
+            <div class="sbar">
+                <div class="dummy"></div>
+                <div class="menubar" id='menubar'>
+                    <div class="eles" onclick="topheadchange('Home')">
+                        <div class="iele">
+                            <i class="fab fa-home fa"></i>
+                        </div>
+                        <div class="ele">
+                            <h3>Home</h3>
+                        </div>
+                    </div>
+                    <div class="eles" onclick="topheadchange('Shedule')">
+                        <div class="iele">
+                            <i class="fab fa-calendar fa"></i>
+                        </div>
+                        <div class="ele">
+                            <h3>Shedule</h3>
+                        </div>
+                    </div>
+                    <div class="eles" onclick="topheadchange('About Us')">
+                        <div class="iele">
+                            <i class="fab fa-users fa"></i>
+                        </div>
+                        <div class="ele">
+                            <h3>About Us</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="otabsshow" id='OTbody'>            
+            <div class="dummy"><!--dummy--></div>
+            <div class="otabbody">
+                <div class="othertabs" id='otabshtml'>
+                    <!--Other tabs codes will be injected here-->
+                </div>
+            </div>
+        </div>
         <div class="loader">
             <div class="cube">
                 <div class="load">
@@ -47,6 +94,7 @@
             </footer>
         </div>
     </div>
+    <script src="datas.js"></script>
     <script src="index.js"></script>
 </body>
 </html>
