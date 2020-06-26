@@ -3,6 +3,7 @@ faces[3].style.transform='scale(0.9)';
 var fact=40/faces.length;
 var sfact=fact*0.01;
 var temp;
+var ishome=true;
 arrange();
 
 //arranging all with the corresponding position
@@ -55,9 +56,9 @@ function toback(){
 
 //touch --swipes
 
-document.addEventListener('touchstart',handlestart,false);
-document.addEventListener('touchmove',handlemove,false);
-document.addEventListener('touchend',handleend,false);
+document.getElementById('box').addEventListener('touchstart',handlestart,false);
+document.getElementById('box').addEventListener('touchmove',handlemove,false);
+document.getElementById('box').addEventListener('touchend',handleend,false);
 
 var touchx=null;
 var touchy=null;
@@ -67,11 +68,20 @@ function getTouches(){
     return event.touches||event.originalEvent.touch;
 }
 function handlestart(){
+    if(menubt){
+        menushow();
+    }
+    if(!ishome){
+        return;
+    }
     val=getTouches()[0];
     touchx=val.clientX;
     touchy=val.clientY;
 }
 function handlemove(){
+    if(!ishome){
+        return;
+    }
     val=getTouches()[0];
     deltatouchx=val.clientX-touchx;
     deltatouchy=val.clientY-touchy;
@@ -140,9 +150,9 @@ function handleend(){
 
 //mousepointer swipes....
 
-document.addEventListener('mousedown',mousestart,false);
-document.addEventListener('mousemove',mousemove,false);
-document.addEventListener('mouseup',mouseend,false);
+document.getElementById('box').addEventListener('mousedown',mousestart,false);
+document.getElementById('box').addEventListener('mousemove',mousemove,false);
+document.getElementById('box').addEventListener('mouseup',mouseend,false);
 var clicked=false;
 
 var mousex=null;
@@ -150,6 +160,9 @@ var mousey=null;
 var deltamousex=null;
 var deltamousey=null;
 function mousestart(){
+    if(menubt){
+        menushow();
+    }
     mousex=event.pageX;
     mousey=event.pageY;
     clicked=true;
@@ -228,9 +241,11 @@ function mouseend(){
 
 var player=document.getElementsByTagName('audio')[0];
 var boolplay=false;
+var pausingforbuffering;
 function play(){
     if(boolplay){
         player.pause();
+        document.getElementById('power').innerHTML=`<i class="fa fa-play" aria-hidden="true"></i>`;
         document.getElementById('power').classList.remove('pow');
         document.getElementById('power').classList.remove('load');
         document.getElementById('hed').classList.remove('pow');
@@ -241,6 +256,7 @@ function play(){
         document.getElementById('power').classList.remove('err');
         if(player.play()!==undefined){
             player.play().then(()=>{
+                document.getElementById('power').innerHTML=`<i class="fa fa-pause" aria-hidden="true"></i>`;
                 document.getElementById('power').classList.add('pow');
                 document.getElementById('hed').classList.add('pow');
                 document.getElementById('power').classList.remove('load');
@@ -284,6 +300,7 @@ setInterval(()=>{
 //menu transition-- handburger
 let menubt=false;
 function menushow(){
+    sbar=document.getElementById('sbar');
     menu=document.getElementById('menu');
     menutext=document.getElementById('menutext');
     menubar=document.getElementById('menubar');
@@ -292,11 +309,13 @@ function menushow(){
         menubar.style.width='220px';
         menutext.innerHTML='Menu';
         //call();
+        sbar.style.height='auto';
     }
     else{
         menu.classList.remove('open');
         menubar.style.width='0px';
         menutext.innerHTML='';
+        sbar.style.height='0px';
     }
     menubt=!menubt;
 }
@@ -327,9 +346,11 @@ function topheadchange(x){
     html+=curobj.html;
     if(x=='Home'){
         document.getElementById('OTbody').style.width='0px';
+        ishome=true;
     }
     else{
         document.getElementById('OTbody').style.width='80%';
+        ishome=false;
     }
     menushow();
  document.getElementById('topheader').innerHTML=`
@@ -341,3 +362,26 @@ function topheadchange(x){
     </div>`;
     document.getElementById('otabshtml').innerHTML=html;
 }
+
+//is user is playing then boolplay is true
+var pretime;
+var buffering=0;
+var called=false;
+setInterval(()=>{
+    if(!boolplay){
+        return;
+    }
+    if(player.currentTime==pretime){
+        buffering++;
+        if(buffering>2 && !called){
+            play();
+            play();
+            called=true;
+        }
+    }
+    else{
+        buffering=0;
+        called=false;
+    }
+    pretime=player.currentTime;
+},100)
