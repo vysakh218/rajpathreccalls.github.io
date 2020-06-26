@@ -263,10 +263,166 @@ footer nav a i{
     transform: translateX(-50%);
     position: relative;
     justify-content: center;
-    font-size: 2rem;
-    color:white;
+    font-size: 1.2rem;
+    color: white;
 }
 footer .EndNote{
     position: relative;
     text-align: center;
+    font-size: 0.7rem;
+}
+
+
+.otabs{
+    height: auto;
+    z-index: 190;
+}
+.otabs .topheader{
+    background: #333;
+    color: white;
+    position: relative;
+    height: auto;
+    display: flex;
+    overflow-y: auto;
+    align-items: center;
+}
+.otabs .topheader i,.otabs .topheader .headtitle,.otabs .topheader .menutext{
+    padding: 10px 10px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    font-size: 1.5rem;
+    width: auto;
+    transition: all 0.5s;
+}
+.headtitle{
+    flex-grow: 1;
+}
+
+.menu{
+    padding: 5px 5px;
+    position: relative;
+    display: flex;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    overflow: hidden;
+}
+.menu span,.menu span:before,.menu span:after{
+    position: relative;
+    margin: auto;
+    display: block;
+    background: white;
+    width: 30px;
+    height: 3px;
+    border-radius: 5px;
+    transition: all 0.5s;
+    overflow: visible;
+}
+.menu span:before,.menu span:after{
+    position: absolute;
+    content: '';
+    width: 30px;
+}
+.menu span:after{
+    transform: translateY(-12px);
+}
+.menu span:before{
+    transform: translateY(12px);
+}
+
+.menu.open span{
+    transform: translateX(0px) rotate(360deg);
+    background: transparent;
+    box-shadow: none;
+}
+.menu.open span::after{
+    transform: translate(0px,0px) rotate(-45deg);
+}
+.menu.open span:before{
+    transform: translate(0px,0px) rotate(45deg);
+}
+.sbar{
+    position: relative;
+    width: auto;
+    height: auto;
+    display: flex;
+}
+.sbar .dummy{
+    position: relative;
+    flex-grow: 1;
+}
+.sbar .menubar{
+    position: relative;
+    width: 0px;
+    height: auto;
+    background: #333;
+    transition: all 0.5s;
+    overflow: hidden;
+    color: #ccc;
+}
+.sbar .menubar .eles{
+    display: flex;
+    padding: 10px 10px;
+    position: relative;
+    height: auto;
+}
+.sbar .menubar .eles .ele h2,.sbar .menubar .eles .ele h3{
+    position: relative;
+    width: auto;
+    display: inline-block;
+    overflow: hidden;
+}
+.sbar .menubar .eles .iele,.sbar .menubar .eles .ele{
+    position: relative;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.sbar .menubar .eles .iele i{
+    padding: 0px 10px;
+    position: relative;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+}
+.otabsshow{
+    z-index: 150;
+    width: 0px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.5s;
+}
+.otabsshow .dummy{
+    background: transparent;
+    position: relative;
+    height: 50px;
+}
+.otabsshow .otabbody{
+    margin-top: 10px;
+    padding: 20px 20px;
+    position: relative;
+    max-height: calc(100% - 140px);
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background: black;
+}
+::-webkit-scrollbar{
+    width: 2px;
+}
+.otabsshow .otabbody .othertabs{
+    display: block;
+    position: relative;
+    overflow-y: scroll;
+}
+.otabsshow .otabbody .othertabs h2,.otabsshow .otabbody .othertabs p{
+    color: white;
+    position: relative;
+    height: auto;
 }
