@@ -259,6 +259,8 @@ function play(){
 //ensure image cannot be dragged
 var images;
 function init(){
+    topheadchange('Home','home');
+    menushow();
     images=document.getElementsByTagName('img');
     for(var i=0;i<images.length;i++){
         images[i].draggable=false;
@@ -277,3 +279,65 @@ setInterval(()=>{
     document.getElementById('box').style.background=`linear-gradient(135deg,#${tempcolor},black)`;
     console.log('colour change');
 },15000);
+
+
+//menu transition-- handburger
+let menubt=false;
+function menushow(){
+    menu=document.getElementById('menu');
+    menutext=document.getElementById('menutext');
+    menubar=document.getElementById('menubar');
+    if(!menubt){
+        menu.classList.add('open');
+        menubar.style.width='220px';
+        menutext.innerHTML='Menu';
+        //call();
+    }
+    else{
+        menu.classList.remove('open');
+        menubar.style.width='0px';
+        menutext.innerHTML='';
+    }
+    menubt=!menubt;
+}
+
+function timer(ms){
+    return new Promise(res=>setTimeout(res,ms))
+}
+/*
+menuanimtext='Menu';
+async function call(){
+    for(var animi=0;animi<menuanimtext.length;animi++){
+        menutext.innerHTML+=menuanimtext[animi];
+        await timer(100);
+    }
+}
+*/
+
+
+
+function topheadchange(x){
+    html=`<p>This is under development</p><br>`;
+    var curobj;
+    otabs.forEach(element => {
+        if(element.label==x){
+            curobj=element;
+        }
+    });
+    html+=curobj.html;
+    if(x=='Home'){
+        document.getElementById('OTbody').style.width='0px';
+    }
+    else{
+        document.getElementById('OTbody').style.width='80%';
+    }
+    menushow();
+ document.getElementById('topheader').innerHTML=`
+    <i class="fab fa-${curobj.icon} fa" id='curicon'></i>
+    <div class="headtitle" id='curhead'>${x}</div>
+    <div class="menutext" id='menutext'></div>
+    <div class="menu" id='menu' onclick="menushow()">
+        <span></span>
+    </div>`;
+    document.getElementById('otabshtml').innerHTML=html;
+}
