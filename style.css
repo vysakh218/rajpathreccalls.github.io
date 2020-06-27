@@ -287,6 +287,7 @@ footer .EndNote{
     display: flex;
     overflow-y: auto;
     align-items: center;
+    transition: all 0.1s;
 }
 .otabs .topheader i,.otabs .topheader .headtitle,.otabs .topheader .menutext{
     padding: 10px 10px;
@@ -368,6 +369,7 @@ footer .EndNote{
     padding: 10px 10px;
     position: relative;
     height: auto;
+    transition: all 0.5s;
 }
 .sbar .menubar .eles .ele h2,.sbar .menubar .eles .ele h3{
     position: relative;
@@ -391,6 +393,10 @@ footer .EndNote{
     width: auto;
     height: auto;
     overflow: hidden;
+}
+.sbar .menubar .eles.cur{
+    background: white;
+    color: #333;
 }
 .otabsshow{
     z-index: 150;
