@@ -22,7 +22,7 @@
             <div class="sbar" id='sbar'>
                 <div class="dummy"></div>
                 <div class="menubar" id='menubar'>
-                    <div class="eles" onclick="topheadchange('Home')">
+                    <div class="eles" onclick="topheadchange('Home')" id='Home'>
                         <div class="iele">
                             <i class="fab fa-home fa"></i>
                         </div>
@@ -30,7 +30,7 @@
                             <h3>Home</h3>
                         </div>
                     </div>
-                    <div class="eles" onclick="topheadchange('Schedule')">
+                    <div class="eles" onclick="topheadchange('Schedule')" id='Schedule'>
                         <div class="iele">
                             <i class="fab fa-calendar fa"></i>
                         </div>
@@ -38,7 +38,7 @@
                             <h3>Schedule</h3>
                         </div>
                     </div>
-                    <div class="eles" onclick="topheadchange('About Us')">
+                    <div class="eles" onclick="topheadchange('About Us')" id='About Us'>
                         <div class="iele">
                             <i class="fab fa-users fa"></i>
                         </div>
@@ -51,7 +51,7 @@
         </div>
         <div class="otabsshow" id='OTbody'>            
             <div class="dummy"><!--dummy--></div>
-            <div class="otabbody" id='otbody'>
+            <div class="otabbody" id='otbody' onclick="checkmenu()">
                 <div class="othertabs" id='otabshtml'>
                     <!--Other tabs codes will be injected here-->
                 </div>
