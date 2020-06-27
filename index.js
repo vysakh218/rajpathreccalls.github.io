@@ -273,6 +273,12 @@ function play(){
     }
 }
 
+//timer -- for async functions
+
+function timer(ms){
+    return new Promise(res=>setTimeout(res,ms))
+}
+
 //ensure image cannot be dragged
 var images;
 function init(){
@@ -300,7 +306,7 @@ setInterval(()=>{
 
 //menu transition-- handburger
 let menubt=false;
-function menushow(){
+async function menushow(){
     sbar=document.getElementById('sbar');
     menu=document.getElementById('menu');
     menutext=document.getElementById('menutext');
@@ -316,14 +322,18 @@ function menushow(){
         menu.classList.remove('open');
         menubar.style.width='0px';
         menutext.innerHTML='';
+        await timer(500);
         sbar.style.height='0px';
     }
     menubt=!menubt;
 }
-
-function timer(ms){
-    return new Promise(res=>setTimeout(res,ms))
+function checkmenu(){
+    if(menubt){
+        menushow();
+    }
 }
+
+
 /*
 menuanimtext='Menu';
 async function call(){
@@ -335,8 +345,19 @@ async function call(){
 */
 
 
-
-function topheadchange(x){
+var onscerrenwin=null;
+async function topheadchange(x){
+    if(onscerrenwin==x){
+        menushow();
+        return;
+    }
+    else{
+        if(onscerrenwin){
+            document.getElementById(onscerrenwin).classList.remove('cur');
+        }
+        onscerrenwin=x;
+        document.getElementById(onscerrenwin).classList.add('cur');
+    }
     html=`<p>This is under development</p><br>`;
     var curobj;
     otabs.forEach(element => {
@@ -345,23 +366,34 @@ function topheadchange(x){
         }
     });
     html+=curobj.html;
+    document.getElementById('OTbody').style.opacity='0';
     if(x=='Home'){
         document.getElementById('OTbody').style.width='0px';
         ishome=true;
     }
     else{
-        document.getElementById('OTbody').style.width='80%';
+        await timer(100);
+        document.getElementById('OTbody').style.width='95%';
+        document.getElementById('OTbody').style.opacity='1';
         ishome=false;
     }
     menushow();
- document.getElementById('topheader').innerHTML=`
-    <i class="fab fa-${curobj.icon} fa" id='curicon'></i>
-    <div class="headtitle" id='curhead'>${x}</div>
-    <div class="menutext" id='menutext'></div>
-    <div class="menu" id='menu' onclick="menushow()">
-        <span></span>
-    </div>`;
+    document.getElementById('topheader').style.opacity='0';
+    document.getElementById('topheader').style.transform='translateY(-100%)';
+    await timer(100);
+    document.getElementById('topheader').innerHTML=`
+        <i class="fab fa-${curobj.icon} fa" id='curicon'></i>
+        <div class="headtitle" id='curhead'>${x}</div>
+        <div class="menutext" id='menutext'></div>
+        <div class="menu open" id='menu' onclick="menushow()">
+            <span></span>
+        </div>`;
     document.getElementById('otabshtml').innerHTML=html;
+    document.getElementById('topheader').style.opacity='1';
+    document.getElementById('topheader').style.transform='translateY(0%)';
+    await timer(100);
+    document.getElementById('menu').classList.remove('open');
+    console.log('tet');
 }
 
 //is user is playing then boolplay is true
@@ -386,3 +418,64 @@ setInterval(()=>{
     }
     pretime=player.currentTime;
 },100)
+
+
+//Notifications
+/*
+function AskNotificationPermission(){
+    function HandlePermission(permission){
+        if(!('permission' in Notification)){
+            Notification.permission=permission;
+        }
+        if(Notification.permission=='denied' || Notification.permission=='default'){
+            console.log('denied or default');
+        }else{
+            console.log('granted');
+        }
+    }
+    if(!('Notification' in window)){
+        console.log('This browser doesnot support notifications');
+    }
+    else{
+        if(CheckNotificationPromise()){
+            Notification.requestPermission().then((permission)=>{
+                HandlePermission(permission);
+            })
+        }
+        else{
+            Notification.requestPermission(function(permission){
+                HandlePermission(permission);
+            });
+        }
+    }
+}
+function CheckNotificationPromise(){
+    try{
+        Notification.requestPermission().then();
+    }catch(e){
+        return false;
+    }
+    return true;
+}
+
+
+var img='images/nitcpic.png';
+var text=`Radio running in background.`;
+var notification;
+
+function shownotification(){
+    notification=new Notification('Radio',{
+        body:text,
+        icon:img,
+    });
+}
+
+document.addEventListener('visibilitychange',()=>{
+    if(document.visibilityState=='visible'){
+        notification.close;
+    }
+    else{
+        shownotification();
+    }
+})
+*/
