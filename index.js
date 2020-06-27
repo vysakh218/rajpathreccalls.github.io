@@ -250,6 +250,7 @@ function play(){
         document.getElementById('power').classList.remove('load');
         document.getElementById('hed').classList.remove('pow');
         document.getElementById('power').classList.remove('err');
+        boolplay=false;
     }
     else{
         document.getElementById('power').classList.add('load');
@@ -260,6 +261,7 @@ function play(){
                 document.getElementById('power').classList.add('pow');
                 document.getElementById('hed').classList.add('pow');
                 document.getElementById('power').classList.remove('load');
+                boolplay=true;
             })
             .catch(error=>{
                 console.log('error');
@@ -269,7 +271,6 @@ function play(){
             });
         }
     }
-    boolplay=!boolplay;
 }
 
 //ensure image cannot be dragged
