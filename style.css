@@ -65,20 +65,21 @@ body{
 }
 .fac{
     margin-top: 100px;
-    width: 250px;
-    height: 250px;
+    width: 275px;
+    height: 275px;
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.5s;
     border-radius: 6px;
+    transform: translateX(-50%);
 }
 .facd{
     margin-top: 100px;
     position: relative;
-    width: 250px;
-    height: 250px;
+    width: 275px;
+    height: 275px;
     display: flex;
     justify-content: center;
     align-items: center;
