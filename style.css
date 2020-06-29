@@ -75,6 +75,9 @@ body{
     border-radius: 6px;
     transform: translateX(-50%);
 }
+.fac img{
+    border-radius: 6px;
+}
 .facd{
     margin-top: 100px;
     position: relative;
