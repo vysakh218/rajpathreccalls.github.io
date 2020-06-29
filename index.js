@@ -253,21 +253,21 @@ function play(){
         boolplay=false;
     }
     else{
-        document.getElementById('power').classList.add('load');
         document.getElementById('power').classList.remove('err');
+        document.getElementById('power').classList.add('load');
+        boolplay=true;
         if(player.play()!==undefined){
             player.play().then(()=>{
                 document.getElementById('power').innerHTML=`<i class="fa fa-pause" aria-hidden="true"></i>`;
                 document.getElementById('power').classList.add('pow');
                 document.getElementById('hed').classList.add('pow');
                 document.getElementById('power').classList.remove('load');
-                boolplay=true;
             })
             .catch(error=>{
                 console.log('error');
                 document.getElementById('power').classList.add('err');
                 document.getElementById('power').classList.remove('load');
-                return;
+                boolplay=false;
             });
         }
     }
@@ -295,6 +295,8 @@ function init(){
 function ran(){
     return(Math.floor(Math.random()*16));
 }
+
+/*
 //change background color every 10000ms
 setInterval(()=>{
     tar=['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
@@ -302,6 +304,7 @@ setInterval(()=>{
     document.getElementById('box').style.background=`linear-gradient(135deg,#${tempcolor},black)`;
     console.log('colour change');
 },15000);
+*/
 
 
 //menu transition-- handburger
@@ -346,6 +349,18 @@ async function call(){
 
 
 var onscerrenwin=null;
+var frshow=true;
+function forceshow(){
+    if(frshow){
+        document.getElementById('OTbody').style.width='calc(100% - 12px)';
+        document.getElementById('OTbody').style.opacity='1';
+    }
+    else{
+        document.getElementById('OTbody').style.width='0%';
+        document.getElementById('OTbody').style.opacity='0';
+    }
+    frshow=!frshow
+}
 async function topheadchange(x){
     if(onscerrenwin==x){
         menushow();
@@ -373,7 +388,7 @@ async function topheadchange(x){
     }
     else{
         await timer(100);
-        document.getElementById('OTbody').style.width='95%';
+        document.getElementById('OTbody').style.width='calc(100% - 12px)';
         document.getElementById('OTbody').style.opacity='1';
         ishome=false;
     }
@@ -404,21 +419,25 @@ setInterval(()=>{
     if(!boolplay){
         return;
     }
+    checkbuffering();
+},100)
+
+function checkbuffering(){
     if(player.currentTime==pretime){
         buffering++;
-        if(buffering>2 && !called){
-            play();
-            play();
-            called=true;
+        if(buffering>2){
+            document.getElementById('power').classList.add('load');
+            document.getElementById('power').classList.remove('pow');
         }
     }
     else{
         buffering=0;
-        called=false;
+        document.getElementById('power').classList.remove('load');
+        document.getElementById('power').classList.add('pow');
     }
     pretime=player.currentTime;
-},100)
 
+}
 
 //Notifications
 /*
