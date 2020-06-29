@@ -27,13 +27,20 @@ body{
     background-position: bottom right;
     background-size: 200px 200px;
     background-repeat: no-repeat;
+    overflow-y: scroll;
+}
+.bg{
+    background: url(images/bgpic.jpg) no-repeat center;
+    background-size: cover;
+    filter: blur(4px);
+    height: 120%;
 }
 .box{
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    background: linear-gradient(135deg,white,black);
+    height: 120%;
 }
 .cube,.main{
     display: flex;
@@ -60,12 +67,12 @@ body{
     margin-top: 100px;
     width: 250px;
     height: 250px;
-    background: red;
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.5s;
+    border-radius: 6px;
 }
 .facd{
     margin-top: 100px;
@@ -86,6 +93,7 @@ canvas{
 img{
     width: 250px;
     height: 250px;
+    background: none;
 }
 button:hover{
     outline: none;
@@ -124,9 +132,9 @@ button:hover{
     justify-content: center;
     align-items: center;
     font-size: 3rem;
-    color: black;
-    background: radial-gradient(circle,white 0%,transparent 75%);
-    border: 2px solid black;
+    color: #5efc82;
+    background: #00c853;
+    border: 2px solid transparent;
 }
 .plapau i{
     width: auto;
@@ -134,10 +142,8 @@ button:hover{
     font-size: 2rem;
 }
 .plapau.pow{
-    border: 2px solid #6e38ef;
-    color: blue;
-    text-shadow: 0px 0px 30px rgba(100,100,255,0.7);
-    box-shadow: inset 0px 0px 10px rgba(100,100,255,0.7);
+    background: #67daff;
+    color: #03a9f4;
 }
 .plapau.load{
     color: #0f0;
@@ -145,10 +151,11 @@ button:hover{
 .plapau.load::after{
     position: absolute;
     content: '';
-    width: 100px;
-    height: 100px;
-    border-left: 3px solid #0f0;
-    border-right: 3px solid #0f0;
+    width: 98px;
+    height: 98px;
+    border: 4px solid transparent;
+    border-left-color: #0f0;
+    border-right-color: #0f0;
     animation: rotload 1s linear infinite;
     border-radius: 50%;
 }
@@ -173,15 +180,24 @@ button:hover{
 }
 
 .loader{
-    background: #333;
     z-index: -200;
     display: flex;
     justify-content: center;
     align-items: center;
     animation: loadspecific 3s linear 1;
     opacity: 0;
+    height: 120%;
 }
-
+.loader .loadbg{
+    background: #333;
+}
+.loader .loadbg img{
+    width: 100%;
+    height: 100%;
+    background: url(images/rajan.png) no-repeat center;
+    background-size: cover;
+    filter: blur(8px);
+}
 .loader .load{
     display: block;
     width: auto;
@@ -247,8 +263,10 @@ button:hover{
 footer{
     height: auto;
     bottom: 0px;
+    background: black;
 }
 footer nav{
+    margin-top: 10px;
     width: auto;
     position: relative;
     display: flex;
@@ -269,6 +287,7 @@ footer nav a i{
     color: white;
 }
 footer .EndNote{
+    margin-top: 5px;
     position: relative;
     text-align: center;
     font-size: 0.7rem;
@@ -404,14 +423,10 @@ footer .EndNote{
     margin-left: 50%;
     transform: translateX(-50%);
     transition: all 0.5s;
-}
-.otabsshow .dummy{
-    background: transparent;
-    position: relative;
-    height: 50px;
+    height: 118%;
 }
 .otabsshow .otabbody{
-    margin-top: 10px;
+    margin-top: 56px;
     padding: 20px 20px;
     position: relative;
     max-height: calc(100% - 140px);
@@ -420,17 +435,51 @@ footer .EndNote{
     justify-content: center;
     display: flex;
     background: black;
+    border-radius: 10px;
 }
 ::-webkit-scrollbar{
-    width: 2px;
+    width: 0px;
+    background: transparent;
 }
 .otabsshow .otabbody .othertabs{
     display: block;
     position: relative;
     overflow-y: scroll;
+    color: white;
 }
 .otabsshow .otabbody .othertabs h2,.otabsshow .otabbody .othertabs p{
     color: white;
     position: relative;
     height: auto;
 }
+/*
+.othertabs .shedule{
+    position: relative;
+    height: auto;
+    display: block;
+    padding: 3%;
+    width: 94%;
+}
+.shedule .pname{
+    position: relative;
+}
+.sheti .stime,.sheti .etime,.sheti .info{
+    padding: 6px;
+    position: relative;
+    width: auto;
+}
+.sheti .info{
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+.shedule .sheti{
+    display: flex;
+    position: relative;
+}
+.sheti .info i{
+    width: auto;
+    position: relative;
+
+}
+*/
